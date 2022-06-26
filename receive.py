@@ -37,8 +37,8 @@ class IPOption_MRI(IPOption):
                                    length_from=lambda pkt:pkt.count*4) ]
 def handle_pkt(pkt):
     if PPVR in pkt:
-        print "got a packet"
-        pkt.show2()
+        layer = pkt.getlayer(PPVR)
+        print "Packet length sum: %s\tDelta time: \t%s\tThroughput: \t%s\tValue: %s, Label: %s" % (layer.DEBUG_HEADER_pl_sum, layer.DEBUG_HEADER_delta, layer.tp, layer.max_label, layer.label)
     #    hexdump(pkt)
         sys.stdout.flush()
 
