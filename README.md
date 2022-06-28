@@ -24,9 +24,10 @@ Csomagok egyenlőbb elosztása, felhasználók priorizálása.
 - a program futtatásához olyan környezet szükséges ahol *python3* rendelkezésünkre áll!
 - a *make* parancsot a *\prognet-bead\solution\prognet-bead* mappában állva adjuk ki
 - ezután ha elindult a mininet környezet, a következő parancs szükséges: *xterm h1 h2*
-- majd a **h2**-es ablak lesz a fogadó oldal, ehhez a következőre lesz szükség: *./receive.py*
+- majd a **h2**-es ablak lesz a fogadó oldal, ehhez a következő parancsot kell kiadni: *./receive.py*
 - a **h1**-es ablak pedig a küldő oldal, itt két dologra van lehetőség
   * a *./send.py 10.0.2.2 "some message"* parancs hatására 1 db üzenetet tudunk egyszerre elküldeni, de ez nem fogja igazán megmutatni a feladatunk lényegét
-  * ezért érdemes inkább a *./test.py 10.0.2.2 1000 250* parancsot kiadni, mellyel folyamatosan küldjük az üzeneteket, 1000-es hosszúságúak és 250 miliszekundumos várakozással mennek egymás után
+  * ezért érdemes inkább a *./test.py 10.0.2.2 1000 250* parancsot kiadni, mellyel folyamatosan küldjük az üzeneteket, melyek 1000-es hosszúságúak és 250 miliszekundumos várakozással mennek egymás után
 - ha elindult az üzenetküldés, akkor a fogadó oldalon a konzolra kiírva megjelenítjük az elküldött csomagok címkéinek eloszlását, aminek indítás után kell egy kis idő, hogy beálljon, de kis várakozás után szépen látszik, hogy nagyából egyenletes az eloszlás
-  * ha elkezdjük a várakozási időt csökkenteni, akkor látni kell a maximális címke egyre kisebb lesz
+  * ha elkezdjük a várakozási időt csökkenteni, akkor látni kell, hogy a maximális címke egyre kisebb lesz
+  * az eloszlásnál a legutóbbi 100 üzenetet vesszük figyelembe, természetesen amíg nem érjük el a 100. üzenetet addig kevesebbel dolgozunk, illetve emiatt az eloszlás sem feltétlenül lesz pontos
