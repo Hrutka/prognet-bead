@@ -19,3 +19,14 @@ Csomagok egyenlőbb elosztása, felhasználók priorizálása.
   * Forgalmat generálunk adott rátával (pl. 10Mbps).
   * A küldött csomagokat felcímkézzük.
   * Fogadó oldalon számoljuk, hogy címkénként hány csomag érkezett, aminek egyenlő eloszlásúnak kell lennie a címkék szerint.
+
+### A program futtatása:
+- a program futtatásához olyan környezet szükséges ahol *python3* rendelkezésünkre áll!
+- a *make* parancsot a *\prognet-bead\solution\prognet-bead* mappában állva adjuk ki
+- ezután ha elindult a mininet környezet, a következő parancs szükséges: *xterm h1 h2*
+- majd a **h2**-es ablak lesz a fogadó oldal, ehhez a következőre lesz szükség: *./receive.py*
+- a **h1**-es ablak pedig a küldő oldal, itt két dologra van lehetőség
+  * a *./send.py 10.0.2.2 "some message"* parancs hatására 1 db üzenetet tudunk egyszerre elküldeni, de ez nem fogja igazán megmutatni a feladatunk lényegét
+  * ezért érdemes inkább a *./test.py 10.0.2.2 1000 250* parancsot kiadni, mellyel folyamatosan küldjük az üzeneteket, 1000-es hosszúságúak és 250 miliszekundumos várakozással mennek egymás után
+- ha elindult az üzenetküldés, akkor a fogadó oldalon a konzolra kiírva megjelenítjük az elküldött csomagok címkéinek eloszlását, aminek indítás után kell egy kis idő, hogy beálljon, de kis várakozás után szépen látszik, hogy nagyából egyenletes az eloszlás
+  * ha elkezdjük a várakozási időt csökkenteni, akkor látni kell a maximális címke egyre kisebb lesz
