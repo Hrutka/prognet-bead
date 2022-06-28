@@ -48,6 +48,7 @@ def handle_pkt(pkt):
         layer = pkt.getlayer(PPVR)
         #print("Packet length sum: %s\tDelta time: \t%s\tThroughput: \t%s\tValue: %s, Label: %s" % (layer.DEBUG_HEADER_pl_sum, layer.DEBUG_HEADER_delta, layer.tp, layer.max_label, layer.label))
         addLabel(layer.label)
+        print_distribution()
     #    hexdump(pkt)
         sys.stdout.flush()
 
@@ -55,7 +56,6 @@ def addLabel(label):
     if len(labels) == 100:
         labels.pop(0)
         labels.append(label)
-        print_distribution()
     else:
         labels.append(label)
 
