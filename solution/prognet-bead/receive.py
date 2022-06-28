@@ -48,7 +48,7 @@ def handle_pkt(pkt):
         layer = pkt.getlayer(PPVR)
         #print("Packet length sum: %s\tDelta time: \t%s\tThroughput: \t%s\tValue: %s, Label: %s" % (layer.DEBUG_HEADER_pl_sum, layer.DEBUG_HEADER_delta, layer.tp, layer.max_label, layer.label))
         addLabel(layer.label)
-        print_distribution()
+        print_distribution(layer.max_label)
     #    hexdump(pkt)
         sys.stdout.flush()
 
@@ -59,7 +59,7 @@ def addLabel(label):
     else:
         labels.append(label)
 
-def print_distribution():
+def print_distribution(max):
     tmp = labels.copy()
     tmp.sort()
     act = 0
@@ -69,11 +69,12 @@ def print_distribution():
         if act == tmp[i]:
             piece += 1
         else:
-            line += str(act) + ": " + str(piece) + ", "
+            line += str(act) + ": " + str(piece) + "\t"
             act = tmp[i]
             piece = 1
-    line += str(act) + ": " + str(piece)
+    line += str(act) + ": " + str(piece) + "\t" + "Max label: " + str(max)
     print(line)
+    print("\n")
 
 def main():
     ifaces = [i for i in os.listdir('/sys/class/net/') if 'eth' in i]
